@@ -1,7 +1,7 @@
 <template lang="pug">
 .page-top
     .page-top__sub
-        img.logo(src="@img/logo.png")
+        VueLogo
     .page-top__main
         h1.title vf-app
         p top
@@ -18,10 +18,6 @@
     }
 }
 
-.logo {
-    display: block;
-    margin: auto;
-}
 .title {
     font-weight: bold;
     margin-bottom: 1em;
@@ -29,7 +25,12 @@
 </style>
 
 <script>
+import VueLogo from '@/components/VueLogo';
+
 export default {
-    name: 'page-top'
+    name: 'page-top',
+    components: {
+        VueLogo
+    }
 };
 </script>

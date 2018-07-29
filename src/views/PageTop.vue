@@ -5,7 +5,7 @@
     .page-top__main
         h1.title vf-app
         p top
-        p counter: {{count}}
+        p(@click="countUp") counter: {{count}}
 </template>
 
 <style lang="scss" scoped>
@@ -28,24 +28,38 @@
 <script>
 import firebase from 'firebase/app';
 import VueLogo from '@/components/VueLogo';
+import firebaseSubscriber from '@/mixin/firebaseSubscriber';
+
+const COUNTER_REF = 'sandbox/count';
 
 export default {
     name: 'page-top',
-    data: () => ({
-        count: 0
-    }),
     components: {
         VueLogo
     },
+    mixins: [firebaseSubscriber],
+    data: () => ({
+        count: 0
+    }),
+    computed: {
+        firebaseSubscription() {
+            return {
+                [COUNTER_REF]: snapshot => this.setCounter(snapshot.val())
+            };
+        }
+    },
+    methods: {
+        setCounter(num) {
+            this.count = num;
+        },
+        countUp() {
+            this.getRef(COUNTER_REF).transaction(count => {
+                return (count || 0) + 1;
+            });
+        }
+    },
     mounted() {
-        // TODO: subscriberいれる
-        const ref = firebase.database().ref('sandbox/count');
-        ref.on('value', snapshot => {
-            this.count = snapshot.val();
-        });
-        ref.transaction(count => {
-            return (count || 0) + 1;
-        });
+        this.countUp();
     }
 };
 </script>

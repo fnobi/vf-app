@@ -27,8 +27,6 @@
 
 <script>
 import firebase from 'firebase/app';
-import 'firebase/database';
-
 import VueLogo from '@/components/VueLogo';
 
 export default {
@@ -46,7 +44,7 @@ export default {
             this.count = snapshot.val();
         });
         ref.transaction(count => {
-            return count + 1;
+            return (count || 0) + 1;
         });
     }
 };

@@ -53,7 +53,7 @@ export default {
             this.count = num;
         },
         countUp() {
-            this.getRef(COUNTER_REF).transaction(count => {
+            this.firebaseRef(COUNTER_REF).transaction(count => {
                 return (count || 0) + 1;
             });
         }

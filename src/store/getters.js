@@ -1,5 +1,5 @@
 export function isLoggedIn(state) {
-    return !!state.userEmail;
+    return state.userEmail && state.userUid;
 }
 
 export function isLoading(state) {

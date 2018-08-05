@@ -42,7 +42,10 @@ import firebaseSubscriber from '@/mixin/firebaseSubscriber';
 export default {
     name: 'memo-pad',
     props: {
-        path: String,
+        refPath: {
+            type: String,
+            required: true,
+        },
     },
     mixins: [firebaseSubscriber],
     data: () => ({
@@ -53,7 +56,7 @@ export default {
     computed: {
         firebaseSubscription() {
             return {
-                [this.path]: snapshot => this.setRemoteData(snapshot.val()),
+                [this.refPath]: snapshot => this.setRemoteData(snapshot.val()),
             };
         },
         hasChange() {
@@ -72,7 +75,7 @@ export default {
             this.previewMode = false;
         },
         endEditing() {
-            const ref = this.firebaseRef(this.path);
+            const ref = this.firebaseRef(this.refPath);
             ref.set(this.editingData);
             this.previewMode = true;
         },

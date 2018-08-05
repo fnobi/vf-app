@@ -6,7 +6,7 @@
     .section
         button(@click="logout") logout
     .section
-        memo-pad(:path="privateMemoPath")
+        memo-pad(:ref-path="privateMemoPath")
 </template>
 
 <style lang="scss" scoped>

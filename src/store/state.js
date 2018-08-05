@@ -1,3 +1,3 @@
 export default {
-    userUid: null
+    userEmail: null,
 };

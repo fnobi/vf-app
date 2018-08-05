@@ -4,7 +4,10 @@ LoginForm(v-else)
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import { mapGetters, mapActions } from 'vuex';
+
 import LoginForm from '@/components/LoginForm';
 
 export default {
@@ -14,6 +17,21 @@ export default {
     },
     computed: {
         ...mapGetters(['isLoggedIn']),
+    },
+    methods: {
+        ...mapActions(['handleUserLogin']),
+    },
+    mounted() {
+        firebase.auth().onAuthStateChanged(user => {
+            console.log('on auth state changed');
+            this.handleUserLogin(user);
+        });
+        firebase.auth().getRedirectResult();
+    },
+    beforeDestroy() {
+        firebase.auth().onAuthStateChanged(user => {
+            console.log('dummy listener');
+        });
     },
 };
 </script>

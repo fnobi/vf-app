@@ -26,6 +26,9 @@ form.memo-pad(@submit.prevent="submit")
 <script>
 export default {
     name: 'memo-pad',
+    props: {
+        path: String,
+    },
     data: () => ({
         editing: null,
     }),

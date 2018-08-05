@@ -7,7 +7,7 @@
         button(@click="logout") logout
     .section
         | memo:
-        memo-pad
+        memo-pad(:path="privateMemoPath")
 </template>
 
 <style lang="scss" scoped>
@@ -32,7 +32,10 @@ export default {
         MemoPad,
     },
     computed: {
-        ...mapState(['userEmail']),
+        ...mapState(['userEmail', 'userUid']),
+        privateMemoPath() {
+            return `/privateMemo/${this.userUid}`;
+        },
     },
     methods: {
         logout() {

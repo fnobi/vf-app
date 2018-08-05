@@ -11,7 +11,7 @@ export default new Router({
         {
             path: '/',
             name: 'top',
-            component: PageTop
+            component: PageTop,
         },
         {
             path: '/private-area',
@@ -20,9 +20,9 @@ export default new Router({
                 {
                     path: '/',
                     name: 'my-page',
-                    component: PageMyPage
-                }
-            ]
-        }
-    ]
+                    component: PageMyPage,
+                },
+            ],
+        },
+    ],
 });

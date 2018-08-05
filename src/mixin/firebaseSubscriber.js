@@ -1,5 +1,5 @@
-import firebase from 'firebase/app';
 import _ from 'lodash';
+import firebase from '@/firebase';
 
 const DEFAULT_EVENT = 'value';
 

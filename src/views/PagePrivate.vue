@@ -5,10 +5,9 @@ login-form(v-else)
 </template>
 
 <script>
-import firebase from 'firebase/app';
-import 'firebase/auth';
 import { mapGetters, mapActions } from 'vuex';
 
+import firebase from '@/firebase';
 import GlobalLoading from '@/components/GlobalLoading';
 import LoginForm from '@/components/LoginForm';
 

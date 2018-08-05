@@ -1,31 +1,32 @@
 <template lang="pug">
-form.memo-pad(v-if="previewMode" @submit.prevent="startEditing")
-    .memo-pad__text(v-html="previewData")
-    p.memo-pad__button
+form.ref-text-form(v-if="previewMode" @submit.prevent="startEditing")
+    .ref-text-form__text(v-html="previewData")
+    p.ref-text-form__button
         button edit
-form.memo-pad(v-else @submit.prevent="endEditing")
-    textarea.memo-pad__text(v-model="editingData")
-    p.memo-pad__button
-        button(@click.prevent="cancelEditing") cancel
+form.ref-text-form(v-else @submit.prevent="endEditing")
+    textarea.ref-text-form__text(v-model="editingData")
+    p.ref-text-form__button
         button(:disabled="!hasChange") ok
+        button(@click.prevent="cancelEditing") cancel
 </template>
 
 <style lang="scss" scoped>
-.memo-pad {
+.ref-text-form {
     display: flex;
     padding: 1em;
     flex-direction: column;
     background-color: #eee;
 }
 
-.memo-pad__text {
+.ref-text-form__text {
     min-height: 10em;
     flex-shrink: 1;
 }
 
-.memo-pad__button {
+.ref-text-form__button {
+    display: flex;
+    flex-direction: row-reverse;
     margin-top: 1em;
-    text-align: right;
     button {
         margin-left: 0.5em;
         &:disabled {
@@ -40,7 +41,7 @@ form.memo-pad(v-else @submit.prevent="endEditing")
 import firebaseSubscriber from '@/mixin/firebaseSubscriber';
 
 export default {
-    name: 'memo-pad',
+    name: 'ref-text-form',
     props: {
         refPath: {
             type: String,

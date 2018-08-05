@@ -1,11 +1,13 @@
 <template lang="pug">
 .page-my-page
     .title mypage
-    .section account: {{userEmail}}
     .section
-        memo-pad
+        | account: {{userEmail}}
     .section
         button(@click="logout") logout
+    .section
+        | memo:
+        memo-pad
 </template>
 
 <style lang="scss" scoped>

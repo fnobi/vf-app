@@ -6,7 +6,7 @@
     .section
         button(@click="logout") logout
     .section
-        memo-pad(:ref-path="privateMemoPath")
+        ref-text-form(:ref-path="privateMemoPath")
 </template>
 
 <style lang="scss" scoped>
@@ -23,12 +23,12 @@
 <script>
 import { mapState } from 'vuex';
 import firebase from '@/firebase';
-import MemoPad from '@/components/MemoPad';
+import RefTextForm from '@/components/RefTextForm';
 
 export default {
     name: 'page-my-page',
     components: {
-        MemoPad,
+        RefTextForm,
     },
     computed: {
         ...mapState(['userEmail', 'userUid']),

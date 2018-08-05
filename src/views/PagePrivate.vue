@@ -1,7 +1,7 @@
 <template lang="pug">
-GlobalLoading(v-if="isLoading")
+global-loading(v-if="isLoading")
 router-view(v-else-if="isLoggedIn")
-LoginForm(v-else)
+login-form(v-else)
 </template>
 
 <script>

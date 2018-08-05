@@ -4,7 +4,7 @@ import 'firebase/database';
 
 import App from './App.vue';
 import router from './router';
-import store from './store';
+import store from '@/store';
 import './registerServiceWorker';
 import firebaseConfig from '@/const/firebaseConfig';
 

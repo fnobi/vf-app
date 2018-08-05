@@ -6,7 +6,8 @@ form.memo-pad(v-if="previewMode" @submit.prevent="startEditing")
 form.memo-pad(v-else @submit.prevent="endEditing")
     textarea.memo-pad__text(v-model="editingData")
     p.memo-pad__button
-        button ok
+        button(@click.prevent="cancelEditing") cancel
+        button(:disabled="!hasChange") ok
 </template>
 
 <style lang="scss" scoped>
@@ -26,6 +27,12 @@ form.memo-pad(v-else @submit.prevent="endEditing")
 .memo-pad__button {
     margin-top: 1em;
     text-align: right;
+    button {
+        &:disabled {
+            pointer-events: none;
+            opacity: 0.5;
+        }
+    }
 }
 </style>
 
@@ -49,6 +56,9 @@ export default {
                 [this.path]: snapshot => this.setRemoteData(snapshot.val()),
             };
         },
+        hasChange() {
+            return this.editingData != this.remoteData;
+        },
         previewData() {
             return (this.remoteData || '').replace(/\n/g, '<br />');
         },
@@ -64,6 +74,9 @@ export default {
         endEditing() {
             const ref = this.firebaseRef(this.path);
             ref.set(this.editingData);
+            this.previewMode = true;
+        },
+        cancelEditing() {
             this.previewMode = true;
         },
     },

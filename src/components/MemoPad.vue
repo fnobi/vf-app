@@ -13,14 +13,13 @@ form.memo-pad(v-else @submit.prevent="endEditing")
 <style lang="scss" scoped>
 .memo-pad {
     display: flex;
-    height: 400px;
     padding: 1em;
     flex-direction: column;
     background-color: #eee;
 }
 
 .memo-pad__text {
-    height: 100%;
+    min-height: 10em;
     flex-shrink: 1;
 }
 
@@ -28,6 +27,7 @@ form.memo-pad(v-else @submit.prevent="endEditing")
     margin-top: 1em;
     text-align: right;
     button {
+        margin-left: 0.5em;
         &:disabled {
             pointer-events: none;
             opacity: 0.5;

@@ -4,8 +4,9 @@
         VueLogo
     .page-top__main
         h1.title vf-app
-        p top
         p(@click="countUp") counter: {{count}}
+        p
+            router-link(:to="{ name: 'my-page' }") my page
 </template>
 
 <style lang="scss" scoped>

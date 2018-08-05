@@ -1,20 +1,34 @@
 <template lang="pug">
 .page-my-page
-    p mypage
-    p account: {{userEmail}}
-    p
+    .title mypage
+    .section account: {{userEmail}}
+    .section
+        memo-pad
+    .section
         button(@click="logout") logout
 </template>
 
 <style lang="scss" scoped>
+.title,
+.section {
+    margin: 1em;
+}
+
+.title {
+    font-weight: bold;
+}
 </style>
 
 <script>
 import { mapState } from 'vuex';
 import firebase from '@/firebase';
+import MemoPad from '@/components/MemoPad';
 
 export default {
     name: 'page-my-page',
+    components: {
+        MemoPad,
+    },
     computed: {
         ...mapState(['userEmail']),
     },

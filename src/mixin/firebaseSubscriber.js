@@ -19,18 +19,18 @@ export default {
         firebaseRef(path) {
             if (!path) return null;
             return firebase.database().ref(path);
-        }
+        },
     },
     watch: {
         firebaseSubscription(newValue) {
             this.clearFirebaseSubscription();
             this.setFirebaseSubscription(newValue);
-        }
+        },
     },
     created() {
         this.setFirebaseSubscription(this.firebaseSubscription);
     },
     destroyed() {
         this.clearFirebaseSubscription();
-    }
+    },
 };

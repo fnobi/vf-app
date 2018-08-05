@@ -64,7 +64,7 @@ workflows:
       - test:
           filters:
             branches:
-              only:
+              ignore:
                 - master
       - deploy:
           filters:

@@ -23,14 +23,13 @@ export default {
     },
     mounted() {
         firebase.auth().onAuthStateChanged(user => {
-            console.log('on auth state changed');
             this.handleUserLogin(user);
         });
         firebase.auth().getRedirectResult();
     },
     beforeDestroy() {
         firebase.auth().onAuthStateChanged(user => {
-            console.log('dummy listener');
+            /* dummy listener */
         });
     },
 };

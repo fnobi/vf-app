@@ -1,5 +1,6 @@
 <template lang="pug">
-router-view(v-if="isLoggedIn")
+GlobalLoading(v-if="isLoading")
+router-view(v-else-if="isLoggedIn")
 LoginForm(v-else)
 </template>
 
@@ -8,15 +9,17 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import { mapGetters, mapActions } from 'vuex';
 
+import GlobalLoading from '@/components/GlobalLoading';
 import LoginForm from '@/components/LoginForm';
 
 export default {
     name: 'page-private',
     components: {
+        GlobalLoading,
         LoginForm,
     },
     computed: {
-        ...mapGetters(['isLoggedIn']),
+        ...mapGetters(['isLoading', 'isLoggedIn']),
     },
     methods: {
         ...mapActions(['handleUserLogin']),

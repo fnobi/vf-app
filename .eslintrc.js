@@ -7,6 +7,7 @@ module.exports = {
     rules: {
         quotes: ['error', 'single'],
         'comma-dangle': ['error', 'always-multiline'],
+        'no-unused-vars': ['error'],
         'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
         'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     },

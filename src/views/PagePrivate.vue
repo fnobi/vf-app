@@ -1,14 +1,13 @@
 <template lang="pug">
-GlobalLoading(v-if="isLoading")
+global-loading(v-if="isLoading")
 router-view(v-else-if="isLoggedIn")
-LoginForm(v-else)
+login-form(v-else)
 </template>
 
 <script>
-import firebase from 'firebase/app';
-import 'firebase/auth';
 import { mapGetters, mapActions } from 'vuex';
 
+import firebase from '@/firebase';
 import GlobalLoading from '@/components/GlobalLoading';
 import LoginForm from '@/components/LoginForm';
 

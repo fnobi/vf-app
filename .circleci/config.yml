@@ -28,7 +28,7 @@ jobs:
 
   deploy:
     docker:
-      - image: circleci/node:7.10
+      - image: circleci/node:8.11.3
 
     working_directory: ~/repo
 

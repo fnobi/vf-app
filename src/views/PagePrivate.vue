@@ -24,16 +24,16 @@ export default {
     methods: {
         ...mapActions(['updateAuthState']),
     },
-    mounted() {
-        firebase.auth().onAuthStateChanged(user => {
+    created() {
+        this._unsubscribe = firebase.auth().onAuthStateChanged(user => {
             this.updateAuthState(user);
         });
         firebase.auth().getRedirectResult();
     },
     beforeDestroy() {
-        firebase.auth().onAuthStateChanged(user => {
-            /* dummy listener */
-        });
+        if (this._unsubscribe) {
+            this._unsubscribe();
+        }
     },
 };
 </script>

@@ -1,10 +1,10 @@
 <template lang="pug">
 form.ref-text-form(v-if="previewMode" @submit.prevent="startEditing")
-    .ref-text-form__text(v-html="previewData")
+    .ref-text-form__text--preview(v-html="previewData")
     p.ref-text-form__button
         button edit
 form.ref-text-form(v-else @submit.prevent="endEditing")
-    textarea.ref-text-form__text(v-model="editingData")
+    textarea.ref-text-form__text--edit(v-model="editingData")
     p.ref-text-form__button
         button(:disabled="!hasChange") ok
         button(@click.prevent="cancelEditing") cancel
@@ -14,19 +14,25 @@ form.ref-text-form(v-else @submit.prevent="endEditing")
 .ref-text-form {
     display: flex;
     padding: 1em;
-    flex-direction: column;
     background-color: #eee;
+    align-items: flex-start;
 }
 
 .ref-text-form__text {
-    min-height: 10em;
+    width: 100%;
     flex-shrink: 1;
+}
+.ref-text-form__text--preview {
+    @extend .ref-text-form__text;
+}
+.ref-text-form__text--edit {
+    @extend .ref-text-form__text;
+    min-height: 10em;
 }
 
 .ref-text-form__button {
     display: flex;
-    flex-direction: row-reverse;
-    margin-top: 1em;
+    flex-direction: column-reverse;
     button {
         margin-left: 0.5em;
         &:disabled {

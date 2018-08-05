@@ -13,7 +13,7 @@ export default {
         },
         clearFirebaseSubscription() {
             _.each(this.firebaseSubscriptionCache, (listener, path) => {
-                this.firebaseRef(key).off(DEFAULT_EVENT, listener);
+                this.firebaseRef(path).off(DEFAULT_EVENT, listener);
             });
         },
         firebaseRef(path) {

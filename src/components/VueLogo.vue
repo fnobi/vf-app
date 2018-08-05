@@ -11,6 +11,6 @@ img.vue-logo(src="@img/logo.png")
 
 <script>
 export default {
-    name: 'vue-logo'
+    name: 'vue-logo',
 };
 </script>

@@ -22,11 +22,11 @@ export default {
         ...mapGetters(['isLoading', 'isLoggedIn']),
     },
     methods: {
-        ...mapActions(['handleUserLogin']),
+        ...mapActions(['updateAuthState']),
     },
     mounted() {
         firebase.auth().onAuthStateChanged(user => {
-            this.handleUserLogin(user);
+            this.updateAuthState(user);
         });
         firebase.auth().getRedirectResult();
     },

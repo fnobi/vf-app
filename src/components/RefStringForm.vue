@@ -1,49 +1,33 @@
 <template lang="pug">
-form.ref-text-form(v-if="previewMode" @submit.prevent="startEditing")
-    .ref-text-form__text--preview(
-        v-html="previewData || '−'"
-        @click="startEditing"
-        :data-empty="!remoteData"
-    )
-    p.ref-text-form__button
+form.ref-string-form(v-if="previewMode" @submit.prevent="startEditing")
+    .ref-string-form__text(@click="startEditing" :data-empty="!remoteData")
+        | {{remoteData || '−'}}
+    p.ref-string-form__button
         button edit
-form.ref-text-form(v-else @submit.prevent="endEditing")
-    textarea.ref-text-form__text--edit(v-model="editingData" ref="input")
-    p.ref-text-form__button
+form.ref-string-form(v-else @submit.prevent="endEditing")
+    input.ref-string-form__text(v-model="editingData" type="text" ref="input")
+    p.ref-string-form__button
         button(:disabled="!hasChange") ok
         button(@click.prevent="cancelEditing") cancel
 </template>
 
 <style lang="scss" scoped>
-.ref-text-form {
+.ref-string-form {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
 }
 
-.ref-text-form__text {
-    flex-shrink: 1;
-    line-height: 1.5;
-    font-size: inherit;
-    padding: 0;
-    border: none;
-    font-family: sans-serif;
-}
-.ref-text-form__text--preview {
-    @extend .ref-text-form__text;
+.ref-string-form__text {
+    word-break: break-word;
     &[data-empty] {
         color: rgba(#000, 0.2);
     }
 }
-.ref-text-form__text--edit {
-    @extend .ref-text-form__text;
-    width: 100%;
-    min-height: 10em;
-    background-color: rgba(#888, 0.2);
-}
 
-.ref-text-form__button {
+.ref-string-form__button {
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: row-reverse;
+    text-align: right;
     button {
         margin-left: 0.5em;
         &:disabled {
@@ -58,7 +42,7 @@ form.ref-text-form(v-else @submit.prevent="endEditing")
 import firebaseSubscriber from '@/mixin/firebaseSubscriber';
 
 export default {
-    name: 'ref-text-form',
+    name: 'ref-string-form',
     props: {
         refPath: {
             type: String,
@@ -79,9 +63,6 @@ export default {
         },
         hasChange() {
             return this.editingData != this.remoteData;
-        },
-        previewData() {
-            return (this.remoteData || '').replace(/\n/g, '<br />');
         },
     },
     methods: {

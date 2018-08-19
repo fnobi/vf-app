@@ -1,5 +1,5 @@
 <template lang="pug">
-multi-block(:ref-path="refPath")
+cms-array(:ref-path="refPath")
     cms-string(
         slot-scope="item"
         :ref-path="`${refPath}/${item.uid}`"
@@ -7,13 +7,13 @@ multi-block(:ref-path="refPath")
 </template>
 
 <script>
-import MultiBlock from '@/components/MultiBlock';
+import CmsArray from '@/components/CmsArray';
 import CmsString from '@/components/CmsString';
 
 export default {
     name: 'cms-string-array',
     components: {
-        MultiBlock,
+        CmsArray,
         CmsString,
     },
     props: {

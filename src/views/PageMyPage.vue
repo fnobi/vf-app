@@ -8,11 +8,14 @@
     .section
         .editor
             .editor__row
-                p.editor__label title
-                cms-string(:ref-path="`${userProfilePath}/title`")
+                p.editor__label 名前
+                cms-string(:ref-path="`${userProfilePath}/name`")
             .editor__row
-                p.editor__label body
+                p.editor__label 自己紹介
                 cms-text(:ref-path="`${userProfilePath}/body`")
+            .editor__row
+                p.editor__label タグ
+                cms-string-array(:ref-path="`${userProfilePath}/tag`")
 </template>
 
 <style lang="scss" scoped>
@@ -41,12 +44,14 @@
 import { mapState } from 'vuex';
 import firebase from '@/firebase';
 import CmsString from '@/components/CmsString';
+import CmsStringArray from '@/components/CmsStringArray';
 import CmsText from '@/components/CmsText';
 
 export default {
     name: 'page-my-page',
     components: {
         CmsString,
+        CmsStringArray,
         CmsText,
     },
     computed: {

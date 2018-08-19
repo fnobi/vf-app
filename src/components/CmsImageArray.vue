@@ -1,20 +1,20 @@
 <template lang="pug">
-multi-block(:ref-path="refPath")
-    ref-string-form(
+cms-array(:ref-path="refPath")
+    cms-image(
         slot-scope="item"
         :ref-path="`${refPath}/${item.uid}`"
     )
 </template>
 
 <script>
-import MultiBlock from '@/components/MultiBlock';
-import RefStringForm from '@/components/RefStringForm';
+import CmsArray from '@/components/CmsArray';
+import CmsImage from '@/components/CmsImage';
 
 export default {
-    name: 'ref-string-array-form',
+    name: 'cms-image-array',
     components: {
-        MultiBlock,
-        RefStringForm,
+        CmsArray,
+        CmsImage,
     },
     props: {
         refPath: {

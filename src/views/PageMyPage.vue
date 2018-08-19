@@ -9,10 +9,10 @@
         .editor
             .editor__row
                 p.editor__label title
-                ref-string-form(:ref-path="`${privateMemoPath}/title`")
+                cms-string(:ref-path="`${privateMemoPath}/title`")
             .editor__row
                 p.editor__label body
-                ref-text-form(:ref-path="`${privateMemoPath}/body`")
+                cms-text(:ref-path="`${privateMemoPath}/body`")
 </template>
 
 <style lang="scss" scoped>
@@ -40,14 +40,14 @@
 <script>
 import { mapState } from 'vuex';
 import firebase from '@/firebase';
-import RefStringForm from '@/components/RefStringForm';
-import RefTextForm from '@/components/RefTextForm';
+import CmsString from '@/components/CmsString';
+import CmsText from '@/components/CmsText';
 
 export default {
     name: 'page-my-page',
     components: {
-        RefStringForm,
-        RefTextForm,
+        CmsString,
+        CmsText,
     },
     computed: {
         ...mapState(['userEmail', 'userUid']),

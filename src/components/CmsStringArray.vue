@@ -1,6 +1,6 @@
 <template lang="pug">
 multi-block(:ref-path="refPath")
-    ref-string-form(
+    cms-string(
         slot-scope="item"
         :ref-path="`${refPath}/${item.uid}`"
     )
@@ -8,13 +8,13 @@ multi-block(:ref-path="refPath")
 
 <script>
 import MultiBlock from '@/components/MultiBlock';
-import RefStringForm from '@/components/RefStringForm';
+import CmsString from '@/components/CmsString';
 
 export default {
-    name: 'ref-string-array-form',
+    name: 'cms-string-array',
     components: {
         MultiBlock,
-        RefStringForm,
+        CmsString,
     },
     props: {
         refPath: {

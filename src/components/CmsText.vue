@@ -1,26 +1,26 @@
 <template lang="pug">
-form.ref-text-form(v-if="previewMode" @submit.prevent="startEditing")
-    .ref-text-form__text--preview(
+form.cms-text(v-if="previewMode" @submit.prevent="startEditing")
+    .cms-text__text--preview(
         v-html="previewData || '−'"
         @click="startEditing"
         :data-empty="!remoteData"
     )
-    p.ref-text-form__button
+    p.cms-text__button
         button edit
-form.ref-text-form(v-else @submit.prevent="endEditing")
-    textarea.ref-text-form__text--edit(v-model="editingData" ref="input")
-    p.ref-text-form__button
+form.cms-text(v-else @submit.prevent="endEditing")
+    textarea.cms-text__text--edit(v-model="editingData" ref="input")
+    p.cms-text__button
         button(:disabled="!hasChange") ok
         button(@click.prevent="cancelEditing") cancel
 </template>
 
 <style lang="scss" scoped>
-.ref-text-form {
+.cms-text {
     display: flex;
     align-items: flex-start;
 }
 
-.ref-text-form__text {
+.cms-text__text {
     flex-shrink: 1;
     line-height: 1.5;
     font-size: inherit;
@@ -28,20 +28,20 @@ form.ref-text-form(v-else @submit.prevent="endEditing")
     border: none;
     font-family: sans-serif;
 }
-.ref-text-form__text--preview {
-    @extend .ref-text-form__text;
+.cms-text__text--preview {
+    @extend .cms-text__text;
     &[data-empty] {
         color: rgba(#000, 0.2);
     }
 }
-.ref-text-form__text--edit {
-    @extend .ref-text-form__text;
+.cms-text__text--edit {
+    @extend .cms-text__text;
     width: 100%;
     min-height: 10em;
     background-color: rgba(#888, 0.2);
 }
 
-.ref-text-form__button {
+.cms-text__button {
     display: flex;
     flex-direction: column-reverse;
     button {
@@ -58,7 +58,7 @@ form.ref-text-form(v-else @submit.prevent="endEditing")
 import firebaseSubscriber from '@/mixin/firebaseSubscriber';
 
 export default {
-    name: 'ref-text-form',
+    name: 'cms-text',
     props: {
         refPath: {
             type: String,

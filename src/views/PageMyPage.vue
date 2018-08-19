@@ -9,10 +9,10 @@
         .editor
             .editor__row
                 p.editor__label title
-                cms-string(:ref-path="`${privateMemoPath}/title`")
+                cms-string(:ref-path="`${userProfilePath}/title`")
             .editor__row
                 p.editor__label body
-                cms-text(:ref-path="`${privateMemoPath}/body`")
+                cms-text(:ref-path="`${userProfilePath}/body`")
 </template>
 
 <style lang="scss" scoped>
@@ -51,8 +51,8 @@ export default {
     },
     computed: {
         ...mapState(['userEmail', 'userUid']),
-        privateMemoPath() {
-            return `/privateMemo/${this.userUid}`;
+        userProfilePath() {
+            return `/userProfile/${this.userUid}`;
         },
     },
     methods: {
